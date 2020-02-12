@@ -1,0 +1,35 @@
+---
+title: "Class_work"
+author: "Tivas Gupta"
+date: "2/11/2020"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(reprex)
+```
+
+Loading libraries.
+
+
+```{r}
+
+
+ class_enrollment_summary_by_term_2_11_20 <- read_excel("class_enrollment_summary_by_term_2.11.20.xlsx", skip  = 3) %>%
+
+clean_names()
+ 
+ class_enrollment_summary_by_term_2_11_20 %>% filter(!(class_enrollment_summary_by_term_2_11_20$course_title == "Grand Total"))
+```
+
+This is simply loading the data.
+
+```{r}
+enrollment <- class_enrollment_summary_by_term_2_11_20
+#str(class_enrollment_summary_by_term_2_11_20)
+class_enrollment_summary_by_term_2_11_20 %>% filter(enrollment$`Course Department` == "Government") %>% arrange(desc(`Total`))
+```
+
+install the janitor and reprex packages.
